@@ -108,7 +108,7 @@ const GitComicGenerator = () => {
             <CardHeader className="pb-4">
               <CardTitle className="text-2xl flex items-center justify-center gap-2 text-slate-700">
                 <Upload className="w-6 h-6 text-indigo-600" />
-                {isElectron ? 'Select Git Repository' : 'Upload Your Git Repository'}
+                {isElectron ? 'Select Git Repository' : 'Analyze Git History'}
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
