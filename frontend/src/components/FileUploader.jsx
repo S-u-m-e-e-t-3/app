@@ -60,12 +60,10 @@ const FileUploader = ({ onUpload, isGenerating }) => {
   };
 
   const handleGenerate = () => {
+    // For demo purposes, allow generation even without files to show mock data
     if (selectedFiles.length === 0) {
-      toast({
-        title: "No files selected",
-        description: "Please upload your git repository files first.",
-        variant: "destructive"
-      });
+      // Use mock data for demonstration
+      onUpload([]);
       return;
     }
     
