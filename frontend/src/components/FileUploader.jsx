@@ -137,7 +137,7 @@ const FileUploader = ({ onUpload, isGenerating }) => {
 
       <Button 
         onClick={handleGenerate}
-        disabled={isGenerating || selectedFiles.length === 0}
+        disabled={isGenerating}
         className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium py-3 rounded-lg transition-all duration-200 transform hover:scale-[1.02] disabled:transform-none disabled:opacity-50"
         size="lg"
       >
