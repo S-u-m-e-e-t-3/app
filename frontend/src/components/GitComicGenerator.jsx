@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Upload, FileText, GitBranch, Sparkles } from 'lucide-react';
 import { Button } from './ui/button';
 import { Card, CardHeader, CardTitle, CardContent } from './ui/card';
 import FileUploader from './FileUploader';
+import ElectronFileUploader from './ElectronFileUploader';
 import ComicTimeline from './ComicTimeline';
 import { mockCommits } from '../mock';
 
@@ -10,14 +11,25 @@ const GitComicGenerator = () => {
   const [commits, setCommits] = useState([]);
   const [isGenerating, setIsGenerating] = useState(false);
   const [showTimeline, setShowTimeline] = useState(false);
+  const [isElectron, setIsElectron] = useState(false);
+
+  useEffect(() => {
+    // Check if running in Electron
+    setIsElectron(window.process && window.process.type);
+  }, []);
 
   const handleFileUpload = async (files) => {
     setIsGenerating(true);
-    // Simulate processing time
-    await new Promise(resolve => setTimeout(resolve, 2000));
     
-    // Use mock data for now
-    setCommits(mockCommits);
+    // If running in Electron and we got actual git commits, use them
+    if (isElectron && Array.isArray(files) && files.length > 0 && files[0].id) {
+      setCommits(files);
+    } else {
+      // Simulate processing time for web version or fallback
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      setCommits(mockCommits);
+    }
+    
     setIsGenerating(false);
     setShowTimeline(true);
   };
@@ -56,26 +68,43 @@ const GitComicGenerator = () => {
             <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
               Transform your project's git commits into an engaging visual story. Perfect for retrospectives, onboarding, and understanding project evolution.
             </p>
+            {isElectron && (
+              <div className="mb-4">
+                <span className="inline-flex items-center gap-2 bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  Desktop App Mode
+                </span>
+              </div>
+            )}
           </div>
 
           <Card className="max-w-2xl mx-auto shadow-2xl border-0 bg-white/80 backdrop-blur-sm">
             <CardHeader className="pb-4">
               <CardTitle className="text-2xl flex items-center justify-center gap-2 text-slate-700">
                 <Upload className="w-6 h-6 text-indigo-600" />
-                Upload Your Git Repository
+                {isElectron ? 'Select Git Repository' : 'Upload Your Git Repository'}
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
-              <FileUploader 
-                onUpload={handleFileUpload}
-                isGenerating={isGenerating}
-              />
+              {isElectron ? (
+                <ElectronFileUploader 
+                  onUpload={handleFileUpload}
+                  isGenerating={isGenerating}
+                />
+              ) : (
+                <FileUploader 
+                  onUpload={handleFileUpload}
+                  isGenerating={isGenerating}
+                />
+              )}
               
               {isGenerating && (
                 <div className="text-center py-8">
                   <div className="inline-flex items-center gap-2 text-indigo-600">
                     <div className="w-4 h-4 border-2 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
-                    <span className="text-sm font-medium">Analyzing git history and generating comic strips...</span>
+                    <span className="text-sm font-medium">
+                      {isElectron ? 'Analyzing git history and generating comic strips...' : 'Analyzing git history and generating comic strips...'}
+                    </span>
                   </div>
                 </div>
               )}
