@@ -22,11 +22,11 @@ const GitComicGenerator = () => {
   const handleFileUpload = async (files) => {
     setIsGenerating(true);
     
-    // If running in Electron and we got actual git commits, use them
-    if (isElectron && Array.isArray(files) && files.length > 0 && files[0].id) {
+    // If we got actual git commits (from online processing or Electron), use them
+    if (Array.isArray(files) && files.length > 0 && files[0].id) {
       setCommits(files);
     } else {
-      // Simulate processing time for web version or fallback
+      // Simulate processing time for web version or fallback to mock data
       await new Promise(resolve => setTimeout(resolve, 2000));
       setCommits(mockCommits);
     }
