@@ -92,14 +92,16 @@ const GitComicGenerator = () => {
             <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
               Transform your project's git commits into an engaging visual story. Perfect for retrospectives, onboarding, and understanding project evolution.
             </p>
-            {isElectron && (
-              <div className="mb-4">
-                <span className="inline-flex items-center gap-2 bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  Desktop App Mode
-                </span>
-              </div>
-            )}
+            
+            {/* Mode Indicator */}
+            <div className="mb-6">
+              <span className={`inline-flex items-center gap-2 ${modeInfo.color} px-4 py-2 rounded-full text-sm font-medium shadow-sm`}>
+                <div className={`w-2 h-2 ${modeInfo.dotColor} rounded-full animate-pulse`}></div>
+                <ModeIcon className="w-4 h-4" />
+                <span>{modeInfo.title}</span>
+                <span className="text-xs opacity-75">• {modeInfo.subtitle}</span>
+              </span>
+            </div>
           </div>
 
           <Card className="max-w-2xl mx-auto shadow-2xl border-0 bg-white/80 backdrop-blur-sm">
