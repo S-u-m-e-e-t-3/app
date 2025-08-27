@@ -129,7 +129,7 @@ const GitComicGenerator = () => {
                   <div className="inline-flex items-center gap-2 text-indigo-600">
                     <div className="w-4 h-4 border-2 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
                     <span className="text-sm font-medium">
-                      {isElectron ? 'Analyzing git history and generating comic strips...' : 'Analyzing git history and generating comic strips...'}
+                      {isElectron ? 'Analyzing git repository and generating comic strips...' : 'Processing git data and generating comic strips...'}
                     </span>
                   </div>
                 </div>
