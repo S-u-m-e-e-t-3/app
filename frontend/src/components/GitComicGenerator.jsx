@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Upload, FileText, GitBranch, Sparkles } from 'lucide-react';
+import { Upload, FileText, GitBranch, Sparkles, Monitor, Globe, Laptop } from 'lucide-react';
 import { Button } from './ui/button';
 import { Card, CardHeader, CardTitle, CardContent } from './ui/card';
 import FileUploader from './FileUploader';
 import ElectronFileUploader from './ElectronFileUploader';
+import OnlineGitProcessor from './OnlineGitProcessor';
 import ComicTimeline from './ComicTimeline';
 import { mockCommits } from '../mock';
 
