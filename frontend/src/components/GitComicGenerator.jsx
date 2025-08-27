@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Upload, FileText, GitBranch, Sparkles, Monitor, Globe, Laptop } from 'lucide-react';
+import { Upload, FileText, GitBranch, Sparkles, Monitor, Globe, Laptop, Github } from 'lucide-react';
 import { Button } from './ui/button';
 import { Card, CardHeader, CardTitle, CardContent } from './ui/card';
 import FileUploader from './FileUploader';
