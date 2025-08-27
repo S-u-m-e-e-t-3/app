@@ -118,7 +118,7 @@ const GitComicGenerator = () => {
                   isGenerating={isGenerating}
                 />
               ) : (
-                <FileUploader 
+                <OnlineGitProcessor 
                   onUpload={handleFileUpload}
                   isGenerating={isGenerating}
                 />
