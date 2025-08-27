@@ -160,6 +160,25 @@ const GitComicGenerator = () => {
               </div>
             </CardContent>
           </Card>
+          
+          {/* Feature Highlights */}
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+            <div className="bg-white/40 backdrop-blur-sm rounded-lg p-4 border border-white/60">
+              <Github className="w-8 h-8 text-blue-600 mx-auto mb-2" />
+              <h3 className="font-medium text-slate-800 text-sm">GitHub Integration</h3>
+              <p className="text-xs text-slate-600 mt-1">Analyze public repositories directly from GitHub</p>
+            </div>
+            <div className="bg-white/40 backdrop-blur-sm rounded-lg p-4 border border-white/60">
+              <FileText className="w-8 h-8 text-green-600 mx-auto mb-2" />
+              <h3 className="font-medium text-slate-800 text-sm">Git Log Parser</h3>
+              <p className="text-xs text-slate-600 mt-1">Paste git log output from any repository</p>
+            </div>
+            <div className="bg-white/40 backdrop-blur-sm rounded-lg p-4 border border-white/60">
+              <Sparkles className="w-8 h-8 text-orange-600 mx-auto mb-2" />
+              <h3 className="font-medium text-slate-800 text-sm">Smart Categorization</h3>
+              <p className="text-xs text-slate-600 mt-1">Auto-detect commit types with manual override</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
