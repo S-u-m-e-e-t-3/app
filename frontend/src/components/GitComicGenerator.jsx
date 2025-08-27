@@ -50,6 +50,29 @@ const GitComicGenerator = () => {
     );
   }
 
+  const getModeInfo = () => {
+    if (isElectron) {
+      return {
+        icon: Laptop,
+        title: 'Desktop App Mode',
+        subtitle: 'Process local git repositories',
+        color: 'bg-green-100 text-green-800',
+        dotColor: 'bg-green-500'
+      };
+    } else {
+      return {
+        icon: Globe,
+        title: 'Online Mode',
+        subtitle: 'GitHub repos & git log parsing',
+        color: 'bg-blue-100 text-blue-800',
+        dotColor: 'bg-blue-500'
+      };
+    }
+  };
+
+  const modeInfo = getModeInfo();
+  const ModeIcon = modeInfo.icon;
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Hero Section */}
